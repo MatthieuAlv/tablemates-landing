@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TableMates - Group Dining Made Simple</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #FAFAF7;
+      color: #2E2E2E;
+    }
+    header {
+      background: linear-gradient(135deg, #B6E3E9, #FCEBD5);
+      text-align: center;
+      padding: 100px 20px 60px;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+    header h1 {
+      font-size: 3em;
+      color: #8A76D2;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.3em;
+      color: #2E2E2E;
+      max-width: 600px;
+      margin: auto;
+    }
+    .cta {
+      display: inline-block;
+      margin-top: 60px;
+      text-decoration: none;
+      text-align: center;
+      padding: 15px 35px;
+      background-color: #FAF089;
+      color: #2E2E2E;
+      font-size: 1.1em;
+      border-radius: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .cta:hover {
+      background-color: #ffe75a;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
+    }
+    .section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .section h2 {
+      color: #8A76D2;
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .feature {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      text-align: center;
+    }
+    .quote {
+      font-style: italic;
+      background-color: #FFFFFF;
+      padding: 20px;
+      border-left: 5px solid #B6E3E9;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    footer {
+      background-color: #8A76D2;
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+    footer h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .form-wrapper {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    input[type="email"] {
+      padding: 15px;
+      width: 70%;
+      border: none;
+      border-radius: 25px;
+      font-size: 1em;
+      margin-right: 10px;
+    }
+    input[type="submit"] {
+      padding: 15px 25px;
+      border: none;
+      border-radius: 25px;
+      background-color: #FAF089;
+      color: #2E2E2E;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    #success-message {
+      display: none;
+      margin-top: 20px;
+      background-color: #D4EDDA;
+      color: #155724;
+      padding: 15px 25px;
+      border-left: 6px solid #28a745;
+      border-radius: 12px;
+      font-size: 1em;
+      animation: fadeIn 0.6s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form)
+      }).then(response => {
+        if (response.ok) {
+          const successMessage = document.getElementById("success-message");
+          successMessage.style.display = "block";
+          successMessage.scrollIntoView({ behavior: 'smooth' });
+          form.reset();
+        }
+      }).catch(error => console.error('Error!', error.message));
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>"Where should we eat?" Just got easier.</h1>
+    <p>TableMates helps you and your friends find the perfect place based on dietary needs, goals, and vibes.</p>
+    <a class="cta" href="https://forms.gle/U6ZgXGjypiMNhAFu8" target="_blank">Take the 2-Minute Quiz</a>
+  </header>
+
+  <div class="section">
+    <h2>✅ Why TableMates?</h2>
+    <div class="features">
+      <div class="feature">✅ <strong>TableMates Verified</strong>: Trustworthy tags for restaurants that meet our standards for dietary accuracy and transparency.</div>
+      <div class="feature">🥗 Add your dietary needs and let us filter the noise.</div>
+      <div class="feature">👯 Add friends to your search for group-friendly options.</div>
+      <div class="feature">📍 See a map with distance, photos, and real menus.</div>
+      <div class="feature">🎯 Filter by goals like high protein, low carb, or vegan.</div>
+      <div class="feature">💸 Price filters for budget-friendly finds.</div>
+      <div class="feature">📖 Real-time menu links and allergy transparency.</div>
+      <div class="feature">👥 Compare restrictions across friends in your group.</div>
+      <div class="feature">🍹 Vibe-based filters: date night, cozy, casual, and more.</div>
+      <div class="feature">📝 Save favorite spots and share custom lists.</div>
+      <div class="feature">⭐ Ratings pulled from Google + peer reviews.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>💬 What people are saying</h2>
+    <div class="quote">“I just eat at home when I can’t find a spot that works for everyone.”</div>
+    <div class="quote">“Restaurants say gluten-free but it’s never accurate. I need to trust it.”</div>
+    <div class="quote">“Let me filter by vibe, cuisine, and price — just like maps, but smarter.”</div>
+  </div>
+
+  <div class="section">
+    <h2>🎮 Earn XP while you eat</h2>
+    <p style="text-align: center; max-width: 700px; margin: auto;">Complete group outings, discover new places, and unlock foodie badges. Make dining out a game everyone wins.</p>
+  </div>
+
+  <footer>
+    <h3>Ready to be part of the future of group dining?</h3>
+    <div class="form-wrapper">
+      <form action="https://script.google.com/macros/s/AKfycbyYXH4KSISgA-luzfWSx-KLcIX8lCkFVp1kSToRwVQv5cIT9JgQYjd0JmtcaBsjMHmMgQ/exec" method="post" onsubmit="handleSubmit(event)">
+        <input type="email" name="email" placeholder="Enter your email" required>
+        <input type="submit" value="Join the Waitlist">
+      </form>
+      <div id="success-message">🎉 You're on the list! Thanks for joining the TableMates waitlist.</div>
+    </div>
+  </footer>
+</body>
+</html>
